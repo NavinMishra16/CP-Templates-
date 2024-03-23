@@ -80,34 +80,24 @@
 #include <unordered_set>
 #endif
 using namespace std;
-
-const int N = 1e6+7;
-vector<bool>prime;
-vector<int>ans;
-void sieve(){
-    prime.assign(N+1,true);
-    prime[0] =prime[1] = false;
-    for(int i = 2 ;i*i<=N;i++){
-        if(prime[i]){
-            for(int j = i*i ;j<=N;j+=i){
-                prime[j] = false;
-            }
-        }
-    }
-    ans.clear();
-    for(int i = 2 ; i <=N ;i++){
-        if(prime[i])ans.push_back(i);
-    }
-    return ;
+/* Time Complexity -> O(N^2)*/
+int LIS(vector<int>&nums){
+     int n = nums.size();
+     vector<int>dp(n+1,1);
+     for(int i= 1 ; i <= n ;i++){
+         for(int j = 0 ; j < i ;j++){
+            dp[i] = max(dp[i],1+dp[j]);
+         }
+     }
+     
+     return *max_element(begin(dp),end(dp));
 }
-
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    sieve();
-    int num; 
-    cin>>num;
-    prime[num]==true?cout<<"This is a Prime"<<endl:cout<<"This is not a Prime"<<endl;
+
+    // Your code here
+
     return 0;
 }
