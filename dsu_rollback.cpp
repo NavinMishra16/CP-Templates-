@@ -55,15 +55,5 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    DSU dsu(5);
-    dsu.unite(3,4);
-    dsu.unite(1,2);
-    cout << "Parent of 4 : " << dsu.find(4) << endl;
-    cout << "Parent of 2 : " << dsu.find(2) << endl;
-    cout << "Size of  Componet 1 After Merge : " << dsu.getsize(1) << endl;
-    dsu.rollback();
-    cout << "Size of  Componet 1 After rollback : " << dsu.getsize(1) << endl;
-    cout << "Parent of 2 after rollback : " << dsu.find(2) << endl;
     return 0;
-
 }
